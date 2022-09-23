@@ -13,6 +13,10 @@ export class UserService {
   }
 
   async user(): Promise<User[]> {
-    return this.prisma.user.findMany();
+    return this.prisma.user.findMany({
+      include: {
+        posts: true,
+      },
+    });
   }
 }
